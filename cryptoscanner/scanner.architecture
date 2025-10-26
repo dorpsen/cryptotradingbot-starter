@@ -1,0 +1,29 @@
+# Crypto Scanner Architectural Blueprint
+
+## 1. Overview
+
+This document outlines the architectural design for the Crypto Scanner application. The primary goal is to create a maintainable, testable, and extensible system for fetching live cryptocurrency data, applying analysis strategies, and displaying the results. This version is a **non-trading scanner**.
+
+## 2. Core Technologies
+
+*   **Language**: **Go (Golang)** is chosen for its high performance, excellent support for concurrency (goroutines and channels), and strong typing, which are ideal for a real-time data processing application.
+*   **Database**: **SQLite** is the designated database. Its serverless, file-based nature makes it perfect for a self-contained desktop application, simplifying setup and deployment.
+
+## 3. Architectural Approach: Layered (Clean/Hexagonal)
+
+The application follows a layered architecture to enforce separation of concerns. The core principle is the **Dependency Rule**: inner layers are completely independent of outer layers.
+
+*   **`domain` (Core)**: Contains the pure business entities (e.g., `Ticker`). It has zero dependencies on any other part of the application.
+*   **`app` (Application)**: Orchestrates the use cases (e.g., "start streaming and save data"). It depends only on the `domain` and the interfaces it defines for external services.
+*   **`exchange` / `storage` (Infrastructure)**: These are the outer layers. They contain the concrete implementations for talking to the outside world. They implement the interfaces required by the `app` layer.
+    *   **DataSource Abstraction**: The connection to an exchange is abstracted via a `DataSource` (or `Streamer`) interface. This allows us to have a `BinanceStreamer` implementation today and add a `CoinbaseStreamer` or a `FileStreamer` (for testing) tomorrow without changing the core application.
+    *   **Repository Abstraction**: Data persistence is abstracted via a `Repository` interface. The initial implementation will be `SqliteRepository`.
+*   **`cmd` (Entrypoint)**: The outermost layer. Its only job is to initialize the concrete types (like `SqliteRepository` and `BinanceStreamer`) and inject them into the application to start it.
+
+## 4. Testing Strategy
+
+A hybrid testing approach ensures quality at all levels:
+
+*   **Behavior-Driven Development (BDD)**: We use Gherkin (`.feature` files) to define the application's behavior from a user's perspective. This drives the overall development and ensures we are building the right features.
+*   **Test-Driven Development (TDD)**: At the code level, we use TDD (the Red-Green-Refactor cycle) to build individual components. We write a failing unit test, write the code to make it pass, and then refactor. This is especially powerful when combined with our architecture, as we can test each layer in isolation by mocking its dependencies (e.g., testing the `app` layer with a mock `Repository`).
+

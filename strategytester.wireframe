@@ -1,0 +1,21 @@
+
+
+
+    Strategy chart: 
+        Shows how equity changes over time. Its appearance depends on the selected strategy
+    Date range: 
+        Allows you to select the time period for displaying results
+    Total P&L: 
+        Overall profit or loss (shown in currency and percentage)
+    Max equity drawdown: 
+        The greatest loss drawdown, i.e., the greatest possible loss the strategy had compared to its highest profits
+    Total trades: 
+        The total number of closed trades, winning and losing
+    Profitable trades: 
+        The percentage of winning trades, the number of winning trades divided by the total number of closed trades
+    Profit factor: 
+        The amount of money the strategy made for every unit of money it lost, gross profits divided by gross losses
+    Buy&hold: 
+        Adds an alternative buy-and-hold scenario to the chart for comparison with the strategy
+    Trades run-up&drawdown: 
+        Displays the extreme values for each trade: maximum unrealized profit (run-up) and maximum drawdown (drawdown)
