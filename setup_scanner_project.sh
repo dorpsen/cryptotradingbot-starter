@@ -24,11 +24,14 @@ touch internal/exchange/binance.go
 touch internal/storage/storage.go
 touch internal/storage/sqlite.go
 
+echo "--- Creating acceptance test feature directory ---"
+mkdir -p tests/acceptance/features
+
 echo "--- Copying BDD feature file ---"
-cp ../scanner.feature .
+cp ../scanner.feature tests/acceptance/features/
 
 echo "--- Creating architectural blueprint file ---"
-cat > scanner.architecture <<'EOF'
+cat > tests/acceptance/features/scanner.architecture <<'EOF'
 # Crypto Scanner Architectural Blueprint
 
 ## 1. Overview
@@ -61,5 +64,3 @@ A hybrid testing approach ensures quality at all levels:
 EOF
 
 echo "--- Project setup complete in '$PROJECT_NAME' directory ---"
-
-

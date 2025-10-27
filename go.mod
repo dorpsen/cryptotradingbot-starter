@@ -3,8 +3,18 @@ module github.com/pieter/GO/cryptotradingbot-starter
 go 1.21
 
 require (
+	github.com/cucumber/godog v0.12.0
 	github.com/gorilla/websocket v1.5.1
 	github.com/mattn/go-sqlite3 v1.14.32
 )
 
-require golang.org/x/net v0.17.0 // indirect
+require (
+	github.com/cucumber/gherkin-go/v11 v11.0.0 // indirect
+	github.com/cucumber/messages-go/v10 v10.0.3 // indirect
+	github.com/gofrs/uuid v4.4.0+incompatible // indirect
+	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
+	github.com/hashicorp/go-memdb v1.3.4 // indirect
+	github.com/hashicorp/golang-lru v0.5.4 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
+	golang.org/x/net v0.25.0 // indirect
+)

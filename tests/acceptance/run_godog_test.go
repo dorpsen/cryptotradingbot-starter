@@ -1,4 +1,4 @@
-package steps_test
+package acceptance
 
 import (
 	"os"
@@ -6,9 +6,8 @@ import (
 
 	"github.com/cucumber/godog"
 	"github.com/cucumber/godog/colors"
-
-	"github.com/dorpsen/cryptotradingbot-starter/tests/acceptance/harness"
-	"github.com/dorpsen/cryptotradingbot-starter/tests/acceptance/steps"
+	"github.com/pieter/GO/cryptotradingbot-starter/tests/acceptance/harness"
+	"github.com/pieter/GO/cryptotradingbot-starter/tests/acceptance/steps"
 )
 
 func TestMain(m *testing.M) {
@@ -24,7 +23,7 @@ func TestMain(m *testing.M) {
 		ScenarioInitializer: steps.InitializeScenario,
 		Options: &godog.Options{
 			Format:        "pretty",
-			Paths:         []string{"tests/acceptance/features"},
+			Paths:         []string{"features"}, // Paths are relative to this file's directory
 			Randomize:     0,
 			StopOnFailure: false,
 			Output:        colors.Colored(os.Stdout),
