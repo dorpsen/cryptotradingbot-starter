@@ -1,4 +1,4 @@
-module github.com/pieter/GO/cryptotradingbot-starter
+module github.com/dorpsen/cryptotradingbot-starter
 
 go 1.21
 
