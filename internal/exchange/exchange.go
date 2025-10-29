@@ -2,7 +2,7 @@ package exchange
 
 import (
 	"context"
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/domain"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/domain"
 )
 
 // Streamer defines the interface for connecting to and receiving data from a live data stream.

@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/domain"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/domain"
 
 	_ "github.com/mattn/go-sqlite3" // Import the SQLite driver
 )

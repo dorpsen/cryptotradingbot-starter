@@ -1,4 +1,4 @@
-module github.com/pieter/GO/cryptotradingbot-starter
+module github.com/dorpsen/cryptotradingbot-starter
 
 go 1.21
 
@@ -9,8 +9,8 @@ require (
 )
 
 require (
-	github.com/cucumber/gherkin-go/v11 v11.0.0 // indirect
-	github.com/cucumber/messages-go/v10 v10.0.3 // indirect
+	github.com/cucumber/gherkin-go/v19 v19.0.3 // indirect
+	github.com/cucumber/messages-go/v16 v16.0.1 // indirect
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
 	github.com/hashicorp/go-memdb v1.3.4 // indirect

@@ -7,10 +7,10 @@ import (
 	"os/signal"
 	"strings"
 
+	"github.com/dorpsen/cryptotradingbot-starter/internal/app"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/exchange"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/storage"
 	_ "github.com/mattn/go-sqlite3" // Driver for database/sql
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/app"
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/exchange"
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/storage"
 )
 
 func main() {
@@ -46,4 +46,3 @@ func main() {
 
 	log.Println("Application finished gracefully.")
 }
-

@@ -6,8 +6,8 @@ import (
 
 	"github.com/cucumber/godog"
 	"github.com/cucumber/godog/colors"
-	"github.com/pieter/GO/cryptotradingbot-starter/tests/acceptance/harness"
-	"github.com/pieter/GO/cryptotradingbot-starter/tests/acceptance/steps"
+	"github.com/dorpsen/cryptotradingbot-starter/tests/acceptance/harness"
+	"github.com/dorpsen/cryptotradingbot-starter/tests/acceptance/steps"
 )
 
 func TestMain(m *testing.M) {

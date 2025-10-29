@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/domain"
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/storage"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/domain"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/storage"
 )
 
 // setupTestDB creates a temporary database for the test and returns a repository and a cleanup function.

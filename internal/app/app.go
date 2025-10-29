@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/exchange"
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/storage"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/exchange"
+	"github.com/dorpsen/cryptotradingbot-starter/internal/storage"
 )
 
 // Application holds the core components and orchestrates the application's logic.

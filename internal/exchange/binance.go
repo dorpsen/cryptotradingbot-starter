@@ -8,20 +8,20 @@ import (
 	"net"
 	"time"
 
+	"github.com/dorpsen/cryptotradingbot-starter/internal/domain"
 	"github.com/gorilla/websocket"
-	"github.com/pieter/GO/cryptotradingbot-starter/internal/domain"
 )
 
 // binanceTicker represents the raw data structure from the Binance API.
 type binanceTicker struct {
-	EventType string        `json:"e"`
-	EventTime int64         `json:"E"`
-	Symbol    string        `json:"s"`
+	EventType string           `json:"e"`
+	EventTime int64            `json:"E"`
+	Symbol    string           `json:"s"`
 	LastPrice domain.BigString `json:"c"`
 	Volume    domain.BigString `json:"v"`
-	OpenTime  int64         `json:"O"`
-	CloseTime int64         `json:"C"`
-	Count     int64         `json:"n"`
+	OpenTime  int64            `json:"O"`
+	CloseTime int64            `json:"C"`
+	Count     int64            `json:"n"`
 }
 
 // toDomain converts a Binance-specific ticker to the application's generic domain.Ticker.
