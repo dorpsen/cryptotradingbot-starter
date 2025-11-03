@@ -68,9 +68,18 @@ func TestSaveTicker(t *testing.T) {
 		t.Fatalf("SaveTicker failed with an unexpected error: %v", err)
 	}
 
-	// Verification from an external package is more complex.
-	// For this test, we'll rely on the lack of an error as a sign of success.
-	// A more advanced test could involve adding a "Get" method to the repository interface
-	// to retrieve and verify the data.
-	t.Log("SaveTicker ran without error.")
+	// Retrieve the ticker to verify it was saved correctly.
+	retrievedTicker, err := repo.GetTickerByEventTime(context.Background(), ticker.EventTime)
+	if err != nil {
+		t.Fatalf("GetTickerByEventTime failed with an unexpected error: %v", err)
+	}
+	if retrievedTicker == nil {
+		t.Fatalf("expected to retrieve a ticker, but got nil")
+	}
+
+	// Compare the retrieved ticker with the original.
+	// Note: Comparing big.Float requires using its Cmp method. 0 means they are equal.
+	if ticker.Symbol != retrievedTicker.Symbol || ticker.EventTime != retrievedTicker.EventTime || ticker.LastPrice.Float.Cmp(retrievedTicker.LastPrice.Float) != 0 || ticker.Volume.Float.Cmp(retrievedTicker.Volume.Float) != 0 || ticker.Count != retrievedTicker.Count {
+		t.Errorf("retrieved ticker does not match saved ticker.\nretrieved:  %+v\noriginal:   %+v", retrievedTicker, ticker)
+	}
 }
