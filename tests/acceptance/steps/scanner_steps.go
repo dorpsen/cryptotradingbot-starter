@@ -140,8 +140,6 @@ func aPriceChartForPairOnTimeframeIsDisplayed(pair, timeframe string) error {
 	if H == nil {
 		return fmt.Errorf("test harness not initialized")
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
-	defer cancel()
 	chart, err := H.QueryChart(pair, timeframe)
 	if err != nil {
 		return err
