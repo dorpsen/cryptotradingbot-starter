@@ -9,4 +9,3 @@ import (
 type Streamer interface {
 	Stream(ctx context.Context, symbol string) (<-chan domain.Ticker, <-chan error)
 }
-

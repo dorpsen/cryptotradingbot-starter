@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"strings"
+	"time"
 
 	"github.com/dorpsen/cryptotradingbot-starter/internal/app"
 	"github.com/dorpsen/cryptotradingbot-starter/internal/exchange"
@@ -31,9 +32,13 @@ func main() {
 	symbol := "btcusdt"
 	url := "wss://stream.binance.com:9443/ws/" + strings.ToLower(symbol) + "@ticker"
 
-	streamer, err := exchange.NewBinanceStreamer(ctx, url)
-	if err != nil {
-		log.Fatalf("Streamer connection failed: %v", err)
+	var streamer exchange.Streamer
+	if os.Getenv("USE_MOCK_STREAMER") == "1" {
+		log.Println("Using mock streamer (USE_MOCK_STREAMER=1)")
+		streamer = exchange.NewMockStreamer(500*time.Millisecond, 100.0)
+	} else {
+		// Use reconnecting streamer which will attempt to reconnect on failures
+		streamer = exchange.NewReconnectingBinanceStreamer(url)
 	}
 
 	// Create the main application object, injecting the dependencies.
