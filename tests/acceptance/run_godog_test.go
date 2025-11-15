@@ -11,6 +11,12 @@ import (
 )
 
 func TestMain(m *testing.M) {
+	// By default, acceptance tests (godog) are skipped unless explicitly enabled
+	// via the RUN_ACCEPTANCE=1 environment variable. This keeps `go test ./...`
+	// fast for local development while still allowing acceptance runs in CI.
+	if os.Getenv("RUN_ACCEPTANCE") != "1" {
+		os.Exit(m.Run())
+	}
 	// Initialize harness and inject into steps package
 	h, err := harness.NewInMemoryHarness()
 	if err != nil {
